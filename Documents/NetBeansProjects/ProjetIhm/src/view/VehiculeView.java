@@ -43,7 +43,7 @@ import util.DateUtil;
  *
  * @author Admin
  */
-public class VehiculeView extends Application implements EventHandler<ActionEvent> {
+public final class VehiculeView extends Application implements EventHandler<ActionEvent> {
 
     Stage vehiculeALL;
     AlertUtil alertUtil = new AlertUtil();
@@ -58,13 +58,17 @@ public class VehiculeView extends Application implements EventHandler<ActionEven
     private List<VehiculeTypeCarburant> carburants;
     List<Vehicule> vehicules;
     vehiculeHelper helper;
+   
 
     public static void main(String[] args) {
         launch(args);
     }
+     public VehiculeView() throws Exception{
+         init();
+     }
 
     @Override
-    public void init() {
+    public void init() throws Exception{
         initComponents();
         initComBoBoxMarque();
         initComboBoxModel();

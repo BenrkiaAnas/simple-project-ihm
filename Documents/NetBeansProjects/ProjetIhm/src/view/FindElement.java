@@ -13,7 +13,6 @@ import bean.VehiculeVidenge;
 import bean.Vehiculekilometrage;
 import helper.KilometrageHelper;
 import helper.VidengeHelper;
-import helper.VidengeTypeHelper;
 import helper.vehiculeHelper;
 import java.util.Date;
 import java.util.List;
@@ -51,7 +50,7 @@ import util.DateUtil;
  *
  * @author Admin
  */
-public class RechercheAll extends Application implements EventHandler<ActionEvent> {
+public final class FindElement extends Application implements EventHandler<ActionEvent> {
 
     AlertUtil alertUtil = new AlertUtil();
     DateUtil dateUtil = new DateUtil();
@@ -74,9 +73,12 @@ public class RechercheAll extends Application implements EventHandler<ActionEven
     public static void main(String[] args) {
         launch(args);
     }
+    public FindElement() throws Exception {
+        init();
+    }
 
     @Override
-    public void init() {
+    public void init() throws Exception{
         initComponents();
         initModelCombobox();
         initCarburantComboBox();
@@ -289,6 +291,16 @@ public class RechercheAll extends Application implements EventHandler<ActionEven
         primaryStage.show();
 
         // Action Element 
+        menu.setOnAction((event) -> {
+            primaryStage.close();
+            try {
+                Menu menu1  = new Menu();
+                menu1.start(new Stage());
+
+            } catch (Exception ex) {
+                System.out.println("erore" + ex);
+            }
+        });
         // 1er Recherche
         rchrch.setOnAction((ActionEvent event) -> {
             int index1 = mdl.getSelectionModel().getSelectedIndex();

@@ -36,7 +36,7 @@ import util.DateUtil;
  *
  * @author Admin
  */
-public class ModelView extends Application {
+public final class ModelView extends Application {
 
     AlertUtil alertUtil = new AlertUtil();
     DateUtil dateUtil = new DateUtil();
@@ -46,8 +46,11 @@ public class ModelView extends Application {
     ModelHelper modelHelper;
     List<VehiculeModele> modeles;
 
+    public ModelView() throws Exception{
+        init();
+    }
     @Override
-    public void init() {
+    public void init() throws Exception{
         initComponents();
         initComBoBoxMarque();
         initHelper();
@@ -108,7 +111,7 @@ public class ModelView extends Application {
         table.setColumnResizePolicy((param) -> true);
         Platform.runLater(() -> customResize(table));
 
-        Scene scene = new Scene(root, 700, 500);
+        Scene scene = new Scene(root, 700, 600);
         // Start Element Node 
         HBox hBox = new HBox();
 
@@ -146,7 +149,13 @@ public class ModelView extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         // Start The Action Part //
-        menu.setOnAction((event) -> {
+         menu.setOnAction((event) -> {
+            Insertion insertion = new Insertion();
+            primaryStage.close();
+            try {
+                insertion.start(new Stage());
+            } catch (Exception ex) {
+            }
         });
         button.setOnAction((event) -> {
             boolean modelV = verifie(textField);

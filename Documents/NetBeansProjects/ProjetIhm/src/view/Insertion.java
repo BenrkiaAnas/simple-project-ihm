@@ -24,8 +24,7 @@ import javafx.stage.Stage;
  *
  * @author Admin
  */
-
-public class Insertion extends Application implements EventHandler<ActionEvent>{
+public class Insertion extends Application implements EventHandler<ActionEvent> {
 
     Stage insertionAll;
 
@@ -50,7 +49,7 @@ public class Insertion extends Application implements EventHandler<ActionEvent>{
         Label TYPECARBURANT = new Label("INSERER TYPE DE CARBURANT");
         Label MODELE = new Label("INSERER MODELE");
         Label MARQUE = new Label("INSERER MARQUE");
-        Button VEHICULEBtn = new Button("Aller");
+        Button vehiculeBtn = new Button("Aller");
         Button KILOMETRAGEBtn = new Button("Aller");
         Button VIDENGEBtn = new Button("Aller");
         Button VIDENGETYPEBtn = new Button("Aller");
@@ -79,8 +78,8 @@ public class Insertion extends Application implements EventHandler<ActionEvent>{
         TYPECARBURANT.setStyle("-fx-font: normal bold 20px 'serif' ");
         MODELE.setStyle("-fx-font: normal bold 20px 'serif' ");
         MARQUE.setStyle("-fx-font: normal bold 20px 'serif' ");
-        VEHICULEBtn.setMinSize(100, 30);
-        VEHICULEBtn.setStyle("-fx-background-color : darkslateblue; -fx-text-fill: white;");
+        vehiculeBtn.setMinSize(100, 30);
+        vehiculeBtn.setStyle("-fx-background-color : darkslateblue; -fx-text-fill: white;");
         KILOMETRAGEBtn.setMinSize(100, 30);
         KILOMETRAGEBtn.setStyle("-fx-background-color : darkslateblue; -fx-text-fill: white;");
         VIDENGEBtn.setMinSize(100, 30);
@@ -98,7 +97,7 @@ public class Insertion extends Application implements EventHandler<ActionEvent>{
         root.add(hBox, 1, 0, 1, 1);
         root.addRow(1, menu);
         root.add(gridPane, 1, 2);
-        gridPane.addRow(0, VEHICULE, VEHICULEBtn);
+        gridPane.addRow(0, VEHICULE, vehiculeBtn);
         gridPane.addRow(1, KILOMETRAGE, KILOMETRAGEBtn);
         gridPane.addRow(2, VIDENGE, VIDENGEBtn);
         gridPane.addRow(3, VIDENGETYPE, VIDENGETYPEBtn);
@@ -112,7 +111,7 @@ public class Insertion extends Application implements EventHandler<ActionEvent>{
         menu.setOnAction((event) -> {
             primaryStage.close();
             try {
-                Menu menu1  = new Menu();
+                Menu menu1 = new Menu();
                 menu1.start(new Stage());
 
             } catch (Exception ex) {
@@ -120,70 +119,75 @@ public class Insertion extends Application implements EventHandler<ActionEvent>{
             }
         });
 
-        VEHICULEBtn.setOnAction((event) -> {
+        vehiculeBtn.setOnAction((event) -> {
 
             primaryStage.close();
             try {
-                VehiculeView vehiculeView1  = new VehiculeView();
-                vehiculeView1.start(new Stage());
-
+                VehiculeView vehiculeView = new VehiculeView();
+                vehiculeView.start(new Stage());
             } catch (Exception ex) {
-                System.out.println("erore" + ex);
+                System.out.println("error " + ex);
             }
-
         });
+
         KILOMETRAGEBtn.setOnAction((event) -> {
-            KilometrageView kilometrageView = new KilometrageView();
-            insertionAll.close();
+
+            primaryStage.close();
             try {
+                KilometrageView kilometrageView = new KilometrageView();
                 kilometrageView.start(new Stage());
             } catch (Exception ex) {
+                System.out.println("error " + ex);
             }
-
         });
         VIDENGEBtn.setOnAction((event) -> {
-            VidengeView videngeView = new VidengeView();
-            insertionAll.close();
+
+            primaryStage.close();
             try {
+                VidengeView videngeView = new VidengeView();
                 videngeView.start(new Stage());
-            } catch (Exception ex) {
-            }
-
-        });
-        VIDENGETYPEBtn.setOnAction((event) -> {
-
-            try {
-                VidengeTypeView videngeTypeView = new VidengeTypeView();
-                insertionAll.close();
-                videngeTypeView.start(new Stage());
             } catch (Exception ex) {
                 System.out.println("error " + ex);
             }
 
         });
+        VIDENGETYPEBtn.setOnAction((event) -> {
+
+            primaryStage.close();
+            try {
+                VidengeTypeView videngeTypeView = new VidengeTypeView();
+                videngeTypeView.start(new Stage());
+            } catch (Exception ex) {
+                System.out.println("error " + ex);
+            }
+        });
         TYPECARBURANTBtn.setOnAction((event) -> {
             CarburantView carburantView = new CarburantView();
-            insertionAll.close();
+            primaryStage.close();
             try {
                 carburantView.start(new Stage());
             } catch (Exception ex) {
+                System.out.println("error " + ex);
             }
 
         });
         MODELEBtn.setOnAction((event) -> {
-            ModelView modelView = new ModelView();
-            insertionAll.close();
+            
+            primaryStage.close();
             try {
+                ModelView modelView = new ModelView();
                 modelView.start(new Stage());
             } catch (Exception ex) {
+                System.out.println("error " + ex);
             }
         });
         MARQUEBtn.setOnAction((event) -> {
             MarqueView marqueView = new MarqueView();
-            insertionAll.close();
+            primaryStage.close();
             try {
                 marqueView.start(new Stage());
             } catch (Exception ex) {
+                System.out.println("error " + ex);
             }
 
         });

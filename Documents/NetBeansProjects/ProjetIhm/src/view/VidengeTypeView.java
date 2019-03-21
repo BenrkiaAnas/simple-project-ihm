@@ -91,7 +91,7 @@ public class VidengeTypeView extends Application {
         menu.setMinSize(100, 30);
         menu.setStyle("-fx-background-color : darkslateblue; -fx-text-fill: white; ; ");
         fieldType.setMinSize(80, 30);
-        fieldType.setPromptText("Entrer Type De Carburant");
+        fieldType.setPromptText("Entrer Type De Vidange");
         button.setMinSize(100, 30);
         button.setStyle("-fx-background-color : darkslateblue; -fx-text-fill: white;");
         hBox.getChildren().add(titre);
@@ -111,11 +111,19 @@ public class VidengeTypeView extends Application {
 
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Type Vidange");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
 
+         menu.setOnAction((event) -> {
+            Insertion insertion = new Insertion();
+            primaryStage.close();
+            try {
+                insertion.start(new Stage());
+            } catch (Exception ex) {
+            }
+        });
         button.setOnAction(event -> {
             boolean typeV = verifie(fieldType);
             boolean prixMaxV = verifie(fieldPrixMaw);

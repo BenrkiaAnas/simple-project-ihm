@@ -40,7 +40,7 @@ import util.DateUtil;
  *
  * @author gouss
  */
-public class VidengeView extends Application {
+public final class VidengeView extends Application {
 
     Stage vidangeAll;
     VehiculeService vehiculeService = new VehiculeService();
@@ -55,9 +55,12 @@ public class VidengeView extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    public VidengeView() throws Exception{
+        init();
+    }
 
     @Override
-    public void init() {
+    public void init() throws Exception{
         initComponents();
         initComboMat();
         initComboType();
@@ -209,7 +212,7 @@ public class VidengeView extends Application {
 
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Videnge Vehicule");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
@@ -267,9 +270,9 @@ public class VidengeView extends Application {
         fieldKilometrageVidenge = new TextField();
         fieldDateVid = new TextField();
 
-        btnFerifier = new Button("ferifier");
+        btnFerifier = new Button("verifier");
         btnSave = new Button("Save");
-        btnMenue = new Button("Menue");
+        btnMenue = new Button("Menu");
 
         table = new TableView();
         dateVidenge = new DatePicker();
@@ -291,7 +294,7 @@ public class VidengeView extends Application {
         if (i >= 0) {
             VidengeType type = videngeTypes.get(i);
             comboPrixVid.getItems().add("Prix-Min " + type.getPrixMin());
-            comboPrixVid.getItems().add("Prix-Max " + type.getPrixMin());
+            comboPrixVid.getItems().add("Prix-Max " + type.getPrixMax());
 
         }
     }

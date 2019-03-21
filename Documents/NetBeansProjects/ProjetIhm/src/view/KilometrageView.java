@@ -33,7 +33,7 @@ import util.DateUtil;
  *
  * @author Admin
  */
-public class KilometrageView extends Application {
+public final class KilometrageView extends Application {
 
     Stage vehiculeALL;
     VehiculeKilometrageService kilometrageService = new VehiculeKilometrageService();
@@ -45,9 +45,12 @@ public class KilometrageView extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    public KilometrageView() throws Exception{
+        init();
+    }
 
     @Override
-    public void init() {
+    public void init() throws Exception{
         initComponents();
         initComBoBoxMarque();
     }

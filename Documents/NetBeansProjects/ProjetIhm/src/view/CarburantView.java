@@ -72,7 +72,13 @@ public class CarburantView extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         // Start The Action Part //
-        menu.setOnAction((event) -> {
+         menu.setOnAction((event) -> {
+            Insertion insertion = new Insertion();
+            primaryStage.close();
+            try {
+                insertion.start(new Stage());
+            } catch (Exception ex) {
+            }
         });
         button.setOnAction((event) -> {
         boolean b=verifie(textField);

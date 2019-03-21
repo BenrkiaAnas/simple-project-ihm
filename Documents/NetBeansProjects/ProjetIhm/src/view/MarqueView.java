@@ -72,6 +72,12 @@ public class MarqueView extends Application {
         primaryStage.show();
         // Start The Action Part //
         menu.setOnAction((event) -> {
+            Insertion insertion = new Insertion();
+            primaryStage.close();
+            try {
+                insertion.start(new Stage());
+            } catch (Exception ex) {
+            }
         });
         button.setOnAction((event) -> {
             AlertUtil alertUtil = new AlertUtil();

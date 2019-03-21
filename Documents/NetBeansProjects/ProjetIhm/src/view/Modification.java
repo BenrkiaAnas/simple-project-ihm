@@ -6,7 +6,6 @@
 package view;
 
 import bean.Vehicule;
-import helper.VidengeHelper;
 import java.util.Date;
 import java.util.List;
 import javafx.application.Application;
@@ -37,7 +36,7 @@ import util.DateUtil;
  *
  * @author Admin
  */
-public class Modification extends Application implements EventHandler<ActionEvent> {
+public final class Modification extends Application implements EventHandler<ActionEvent> {
 
     AlertUtil alertUtil = new AlertUtil();
     VehiculeService vehiculeService = new VehiculeService();
@@ -47,12 +46,16 @@ public class Modification extends Application implements EventHandler<ActionEven
     List<Vehicule> vehicules;
     //VehiculeVidengeHelper vv;
 
+  
     public static void main(String[] args) {
         launch(args);
     }
 
+      public Modification() throws Exception{
+          init();
+      }
     @Override
-    public void init() {
+    public void init() throws Exception{
         initComponents();
         initMatriculeComBox1();
         initMatriculeComBox2();
@@ -280,6 +283,17 @@ public class Modification extends Application implements EventHandler<ActionEven
 
         primaryStage.setScene(scene);
         primaryStage.show();
+        //ACTION
+         menu.setOnAction((event) -> {
+            primaryStage.close();
+            try {
+                Menu menu1  = new Menu();
+                menu1.start(new Stage());
+
+            } catch (Exception ex) {
+                System.out.println("erore" + ex);
+            }
+        });
     }
 
     private void initMatriculeComBox1() {

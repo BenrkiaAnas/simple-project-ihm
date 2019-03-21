@@ -12,7 +12,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
@@ -65,6 +64,40 @@ public class Menu extends Application implements EventHandler<ActionEvent>{
         button3.setStyle("-fx-background-color : darkslateblue; -fx-text-fill: white;");
         // End Style Element //
 
+        //Action View
+        //Recherche
+        button.setOnAction((event) -> {
+            Insertion in = new Insertion();
+            menuAll.close();
+            try {
+                in.start(new Stage());
+            } catch (Exception ex) {
+                System.out.println("error "+ex);
+            }
+        });
+        button2.setOnAction((event) -> {
+           
+            menuAll.close();
+            try {
+                 FindElement fe = new FindElement();
+                fe.start(new Stage());
+            } catch (Exception ex) {
+                System.out.println("error "+ex);
+            }
+        });
+          //Modification
+        button3.setOnAction((event) -> {
+            
+            
+            try {
+                Modification modification = new Modification();
+                primaryStage.close();
+                modification.start(new Stage());
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        });
+        // End Action View
         hBox.getChildren().add(text);
         root.add(hBox, 1, 0, 1, 1);
         root.add(label, 1, 4);
@@ -79,33 +112,8 @@ public class Menu extends Application implements EventHandler<ActionEvent>{
         menuAll = primaryStage;
         //Element Action //
         //Insertion
-        button.setOnAction((event) -> {
-          
-            menuAll.close();
-            try {
-                  Insertion insertion = new Insertion();
-                insertion.start(new Stage());
-            } catch (Exception ex) {
-            }
-        });
-        //Recherche
-        button2.setOnAction((event) -> {
-            RechercheAll rechercheAll = new RechercheAll();
-            menuAll.close();
-            try {
-                rechercheAll.start(new Stage());
-            } catch (Exception ex) {
-            }
-        });
-        //Modification
-        button3.setOnAction((event) -> {
-            Modification modification = new Modification();
-            menuAll.close();
-            try {
-                modification.start(new Stage());
-            } catch (Exception ex) {
-            }
-        });
+       
+      
     }
 
     @Override
